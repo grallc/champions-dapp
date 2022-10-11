@@ -3,6 +3,10 @@ const chainRpc = "http://127.0.0.1:8545"
 const contractAddress = "0x56fC17a65ccFEC6B7ad0aDe9BD9416CB365B9BE8";
 let mintableTokens = []
 
+const alertsClass = 'framer-rbwcf2'
+const buttonClass = 'framer-11qugvl'
+const alertsContentClass = 'framer-styles-preset-12lj5ox'
+
 
 window.ethereum.on("accountsChanged", function (accounts) {
   window.location.reload();
@@ -11,7 +15,7 @@ window.ethereum.on("accountsChanged", function (accounts) {
 
 setTimeout(() => {
   document.title = 'Crypto Champions NFT'
-  document.getElementsByClassName('framer-11qugvl')[0].onclick = (event) => {
+  document.getElementsByClassName(buttonClass)[0].onclick = (event) => {
     event.preventDefault();
     mintToken();
   };
@@ -54,17 +58,17 @@ async function connect() {
 }
 
 function setInfo(infoMsg) {
-  document.getElementsByClassName('framer-rbwcf2')[0].setAttribute('style', 'display: flex !important; background-color: #198754;');
-  document.getElementsByClassName('framer-styles-preset-12lj5ox')[0].innerHTML = infoMsg;
+  document.getElementsByClassName(alertsClass)[0].setAttribute('style', 'display: flex !important; background-color: #198754;');
+  document.getElementsByClassName(alertsContentClass)[0].innerHTML = infoMsg;
 }
 
 function setButtonText(buttonText) {
-  document.getElementsByClassName('framer-styles-preset-12lj5ox')[1].innerHTML = buttonText;
+  document.getElementsByClassName(alertsContentClass)[1].innerHTML = buttonText;
 }
 
 function setError(errorMsg) {
-  document.getElementsByClassName('framer-rbwcf2')[0].setAttribute('style', 'display: flex !important; background-color: #EB0A0A;');
-  document.getElementsByClassName('framer-styles-preset-12lj5ox')[0].innerHTML = errorMsg;
+  document.getElementsByClassName(alertsClass)[0].setAttribute('style', 'display: flex !important; background-color: #EB0A0A;');
+  document.getElementsByClassName(alertsContentClass)[0].innerHTML = errorMsg;
 }
 
 async function mintToken() {
@@ -74,7 +78,7 @@ async function mintToken() {
       return
     } catch { }
   }
-  document.getElementsByClassName('framer-rbwcf2')[0].style.display = "none";
+  document.getElementsByClassName(alertsClass)[0].style.display = "none";
   if (mintableTokens.length === 0) {
     setError('No more Champions VX to mint');
     return
